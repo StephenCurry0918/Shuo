@@ -1,0 +1,1644 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.3     v readr     2.1.4
+## v forcats   1.0.0     v stringr   1.5.0
+## v ggplot2   3.4.3     v tibble    3.2.1
+## v lubridate 1.9.3     v tidyr     1.3.0
+## v purrr     1.0.2     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Stat2Data)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"Hawks"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\#1 \#\#1.1 \#\#\#q1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hSF}\OtherTok{\textless{}{-}}\NormalTok{Hawks }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Species}\SpecialCharTok{==}\StringTok{\textquotesingle{}RT\textquotesingle{}}\SpecialCharTok{\&}\NormalTok{Weight}\SpecialCharTok{\textgreater{}=}\DecValTok{1000}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Wing,Weight,Tail)}
+\FunctionTok{head}\NormalTok{(hSF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Wing Weight Tail
+## 1  412   1090  230
+## 2  412   1210  210
+## 3  405   1120  238
+## 4  393   1010  222
+## 5  371   1010  217
+## 6  390   1120  213
+\end{verbatim}
+
+\#1 \#\#1.2 \#\#\#q1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Arrange\_Hawks}\OtherTok{=}\NormalTok{hSF }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(Wing)}
+\FunctionTok{head}\NormalTok{(Arrange\_Hawks)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Wing Weight Tail
+## 1  37.2   1180  210
+## 2 111.0   1340  226
+## 3 199.0   1290  222
+## 4 241.0   1320  235
+## 5 262.0   1020  200
+## 6 277.0   1500  207
+\end{verbatim}
+
+\#1 \#\#1.3 \#\#\#q1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{species\_code}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}CH\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}RT\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}SS\textquotesingle{}}\NormalTok{)}
+\NormalTok{species\_name\_full}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"Cooper\textquotesingle{}s"}\NormalTok{,}\StringTok{\textquotesingle{}Red{-}tailed\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}Sharp{-}shinned\textquotesingle{}}\NormalTok{)}
+\NormalTok{hawkSpeciesNameCodes}\OtherTok{=}\FunctionTok{data.frame}\NormalTok{(species\_code,species\_name\_full)}
+\FunctionTok{head}\NormalTok{(hawkSpeciesNameCodes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   species_code species_name_full
+## 1           CH          Cooper's
+## 2           RT        Red-tailed
+## 3           SS     Sharp-shinned
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hawksFullName}\OtherTok{=}\NormalTok{Hawks }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Species,Wing,Weight,Tail) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{species\_code=}\NormalTok{Species)}
+\NormalTok{hawksFullName}\OtherTok{\textless{}{-}}\FunctionTok{left\_join}\NormalTok{(hawkSpeciesNameCodes,hawksFullName)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(species_code)`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hawksFullName}\OtherTok{\textless{}{-}}\FunctionTok{select}\NormalTok{(hawksFullName,species\_name\_full,Wing,Weight,Tail)}
+\NormalTok{hawksFullName}\OtherTok{=}\NormalTok{hawksFullName }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{rename}\NormalTok{(}\AttributeTok{Species=}\NormalTok{species\_name\_full)}
+\FunctionTok{head}\NormalTok{(hawksFullName,}\DecValTok{1000}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Species  Wing Weight Tail
+## 1        Cooper's 265.0    470  220
+## 2        Cooper's 233.0    324  191
+## 3        Cooper's 252.0    340  230
+## 4        Cooper's 240.0    340  192
+## 5        Cooper's 271.0    475  232
+## 6        Cooper's 233.0    340  186
+## 7        Cooper's 260.0    420  220
+## 8        Cooper's 265.0    365  224
+## 9        Cooper's 239.0    183  182
+## 10       Cooper's 236.0    390  185
+## 11       Cooper's 223.0    550  210
+## 12       Cooper's 273.0    530  213
+## 13       Cooper's 259.0    470  221
+## 14       Cooper's    NA    480  198
+## 15       Cooper's 225.0    350  215
+## 16       Cooper's 247.0    375  160
+## 17       Cooper's 225.0    400  202
+## 18       Cooper's 265.0    464  225
+## 19       Cooper's 194.0    163  158
+## 20       Cooper's 377.0   1119  226
+## 21       Cooper's 336.0    742  221
+## 22       Cooper's 199.0    187  157
+## 23       Cooper's 268.0    469  227
+## 24       Cooper's 213.0    339  184
+## 25       Cooper's 235.0    327  193
+## 26       Cooper's 243.0    334  196
+## 27       Cooper's 260.0    569  227
+## 28       Cooper's 255.0    429  208
+## 29       Cooper's 225.0    340  190
+## 30       Cooper's 252.0    540  185
+## 31       Cooper's 237.0    365  195
+## 32       Cooper's 268.0    590  215
+## 33       Cooper's 254.0    505  212
+## 34       Cooper's 268.0     56  206
+## 35       Cooper's 145.0    320  180
+## 36       Cooper's 230.0    350  187
+## 37       Cooper's 272.0    565  219
+## 38       Cooper's 225.0    325  179
+## 39       Cooper's 266.0    535  223
+## 40       Cooper's 261.0    505  203
+## 41       Cooper's 223.0    375  185
+## 42       Cooper's 230.0    365  192
+## 43       Cooper's 320.0    229  195
+## 44       Cooper's 227.0    155  192
+## 45       Cooper's 230.0    340  198
+## 46       Cooper's 258.0    490  214
+## 47       Cooper's 254.0    515  218
+## 48       Cooper's 253.0    540  209
+## 49       Cooper's 260.0    565  216
+## 50       Cooper's 227.0    330  193
+## 51       Cooper's 261.0    455  216
+## 52       Cooper's 255.0    960  200
+## 53       Cooper's 260.0    565  205
+## 54       Cooper's 234.0    380  192
+## 55       Cooper's 169.0    640  233
+## 56       Cooper's 223.0    390  181
+## 57       Cooper's 230.0    340  196
+## 58       Cooper's 253.0    525  213
+## 59       Cooper's 216.0    305  185
+## 60       Cooper's 256.0    510  212
+## 61       Cooper's 255.0    440  214
+## 62       Cooper's 218.0    295  183
+## 63       Cooper's 225.0    300  183
+## 64       Cooper's 230.0    330  188
+## 65       Cooper's 252.0    470  211
+## 66       Cooper's 233.0    335  187
+## 67       Cooper's 230.0    335  201
+## 68       Cooper's 220.0    335  185
+## 69       Cooper's 230.0    360  186
+## 70       Cooper's 220.0    320  184
+## 71     Red-tailed 385.0    920  219
+## 72     Red-tailed 376.0    930  221
+## 73     Red-tailed 381.0    990  235
+## 74     Red-tailed 412.0   1090  230
+## 75     Red-tailed 370.0    960  212
+## 76     Red-tailed 375.0    855  243
+## 77     Red-tailed 412.0   1210  210
+## 78     Red-tailed 405.0   1120  238
+## 79     Red-tailed 393.0   1010  222
+## 80     Red-tailed 371.0   1010  217
+## 81     Red-tailed 390.0   1120  213
+## 82     Red-tailed 393.0     NA  238
+## 83     Red-tailed 416.0   1170  243
+## 84     Red-tailed 436.0   1390  232
+## 85     Red-tailed 418.0   1150  238
+## 86     Red-tailed 381.0    950  202
+## 87     Red-tailed 378.0    910  227
+## 88     Red-tailed 396.0   1010  227
+## 89     Red-tailed 399.0   1070  222
+## 90     Red-tailed 416.0   1190  237
+## 91     Red-tailed 415.0    101  238
+## 92     Red-tailed 392.0   1330  213
+## 93     Red-tailed 380.0    990  211
+## 94     Red-tailed 399.0   1100  190
+## 95     Red-tailed 401.0   1190  245
+## 96     Red-tailed 427.0   1490  246
+## 97     Red-tailed 395.0   1040  207
+## 98     Red-tailed 362.0    820  209
+## 99     Red-tailed 396.0   1030  200
+## 100    Red-tailed 391.0   1300  215
+## 101    Red-tailed 413.0   1500  219
+## 102    Red-tailed 371.0   1080  198
+## 103    Red-tailed 385.0   1320  207
+## 104    Red-tailed 378.0   1490  204
+## 105    Red-tailed 416.0   1500  205
+## 106    Red-tailed 384.0   1060  230
+## 107    Red-tailed 382.0   1140  227
+## 108    Red-tailed 390.0   1030  208
+## 109    Red-tailed 390.0   1000  231
+## 110    Red-tailed 393.0   1050  222
+## 111    Red-tailed 378.0   1040  225
+## 112    Red-tailed 398.0   1110  225
+## 113    Red-tailed 412.0   1300  233
+## 114    Red-tailed 400.0    980  214
+## 115    Red-tailed 422.0   1120  233
+## 116    Red-tailed 394.0   1270  245
+## 117    Red-tailed 369.0    880  210
+## 118    Red-tailed 410.0   1255  229
+## 119    Red-tailed 241.0   1320  235
+## 120    Red-tailed 408.0   1320  221
+## 121    Red-tailed  37.2   1180  210
+## 122    Red-tailed 380.0    760  212
+## 123    Red-tailed 396.0   1250  225
+## 124    Red-tailed 326.0     NA  215
+## 125    Red-tailed 416.0   1300  235
+## 126    Red-tailed 390.0   1080  209
+## 127    Red-tailed 391.0   1130  212
+## 128    Red-tailed 387.0   1160  209
+## 129    Red-tailed 420.0   1345  250
+## 130    Red-tailed 435.0   1385  235
+## 131    Red-tailed 400.0   1210  222
+## 132    Red-tailed 398.0   1455  236
+## 133    Red-tailed 395.0   1180  210
+## 134    Red-tailed 410.0   1500  239
+## 135    Red-tailed 369.0   1025  228
+## 136    Red-tailed 372.0    930  220
+## 137    Red-tailed 415.0   1360  233
+## 138    Red-tailed 412.0   1255  236
+## 139    Red-tailed 375.0   1065  216
+## 140    Red-tailed 385.0   1125  233
+## 141    Red-tailed 422.0   1340  248
+## 142    Red-tailed 391.0   1050  221
+## 143    Red-tailed 410.0   1210  227
+## 144    Red-tailed 385.0    980  223
+## 145    Red-tailed 381.0   1000  219
+## 146    Red-tailed 416.0   1390  225
+## 147    Red-tailed 406.0   1275  238
+## 148    Red-tailed 418.0   1180  235
+## 149    Red-tailed 412.0   1210  222
+## 150    Red-tailed 405.0   1085  238
+## 151    Red-tailed 380.0    810  229
+## 152    Red-tailed 381.0    905  227
+## 153    Red-tailed 428.0   1240  245
+## 154    Red-tailed 400.0    990  223
+## 155    Red-tailed 381.0   1010  210
+## 156    Red-tailed 403.0    980  234
+## 157    Red-tailed 382.0    860  219
+## 158    Red-tailed 382.0    970  216
+## 159    Red-tailed 399.0    980  230
+## 160    Red-tailed 380.0    985  223
+## 161    Red-tailed 375.0    990  220
+## 162    Red-tailed 420.0   1210  241
+## 163    Red-tailed 375.0    990  223
+## 164    Red-tailed 395.0   1170  238
+## 165    Red-tailed 406.0   1350  235
+## 166    Red-tailed 414.0   1370  240
+## 167    Red-tailed 388.0    985  220
+## 168    Red-tailed 277.0    940  218
+## 169    Red-tailed 423.0   1310  234
+## 170    Red-tailed 365.0   1035  232
+## 171    Red-tailed 383.0    965  221
+## 172    Red-tailed 391.0   1125  220
+## 173    Red-tailed 389.0    975  232
+## 174    Red-tailed 392.0   1140  214
+## 175    Red-tailed 375.0    950  225
+## 176    Red-tailed 410.0   1210  238
+## 177    Red-tailed 422.0   1205  238
+## 178    Red-tailed 385.0   1045  229
+## 179    Red-tailed 363.0   1090  202
+## 180    Red-tailed 450.0   1190  226
+## 181    Red-tailed 380.0    960  220
+## 182    Red-tailed 385.0    955  215
+## 183    Red-tailed 385.0   1110  122
+## 184    Red-tailed 380.0    900  215
+## 185    Red-tailed 384.0   1075  208
+## 186    Red-tailed 373.0    980  211
+## 187    Red-tailed 381.0    940  220
+## 188    Red-tailed 363.0   1070  204
+## 189    Red-tailed 409.0   1120  229
+## 190    Red-tailed 390.0   1060  205
+## 191    Red-tailed 420.0   1125  244
+## 192    Red-tailed 381.0   1100  225
+## 193    Red-tailed 408.0   1360  239
+## 194    Red-tailed 388.0    995  222
+## 195    Red-tailed 398.0   1095  209
+## 196    Red-tailed 394.0   1075  211
+## 197    Red-tailed 394.0   1140  216
+## 198    Red-tailed 416.0   1240  250
+## 199    Red-tailed 445.0   1465  260
+## 200    Red-tailed 388.0   1105  217
+## 201    Red-tailed 397.0   1010  228
+## 202    Red-tailed 384.0   1075  218
+## 203    Red-tailed 379.0   1060  220
+## 204    Red-tailed 393.0   1015  227
+## 205    Red-tailed 386.0   1100  211
+## 206    Red-tailed 397.0   1010  222
+## 207    Red-tailed 382.0   1000  225
+## 208    Red-tailed 386.0    980  221
+## 209    Red-tailed 417.0   1240  231
+## 210    Red-tailed 403.0   1360  235
+## 211    Red-tailed 401.0   1405  235
+## 212    Red-tailed 377.0   1055  200
+## 213    Red-tailed 432.0   1670  216
+## 214    Red-tailed 390.0   1250  223
+## 215    Red-tailed 381.0   1030  210
+## 216    Red-tailed 403.0   1040  229
+## 217    Red-tailed 390.0   1090  226
+## 218    Red-tailed 386.0   1050  207
+## 219    Red-tailed 402.0   1110  238
+## 220    Red-tailed 374.0   1010  197
+## 221    Red-tailed 358.0    880  250
+## 222    Red-tailed 370.0   1060  215
+## 223    Red-tailed 390.0    920  214
+## 224    Red-tailed 398.0   1195  230
+## 225    Red-tailed 360.0    890  213
+## 226    Red-tailed 355.0    900  214
+## 227    Red-tailed 375.0   1110  224
+## 228    Red-tailed 409.0   1100  215
+## 229    Red-tailed 415.0   1285  239
+## 230    Red-tailed 363.0    920  214
+## 231    Red-tailed 381.0   1025  232
+## 232    Red-tailed 350.0    940  205
+## 233    Red-tailed 398.0   1240  243
+## 234    Red-tailed 412.0   1160  255
+## 235    Red-tailed 411.0   1240  276
+## 236    Red-tailed 373.0    930  210
+## 237    Red-tailed 415.0   1240  231
+## 238    Red-tailed 383.0   1030  216
+## 239    Red-tailed 390.0   1250  210
+## 240    Red-tailed 390.0    999  220
+## 241    Red-tailed 365.0   1120  260
+## 242    Red-tailed 345.0   1000  200
+## 243    Red-tailed 400.0   1040  230
+## 244    Red-tailed 380.0   1150  220
+## 245    Red-tailed 330.0   1000  220
+## 246    Red-tailed 410.0   1360  235
+## 247    Red-tailed 313.0    930  215
+## 248    Red-tailed 384.0    980  215
+## 249    Red-tailed 409.0   1260  221
+## 250    Red-tailed 390.0    900  225
+## 251    Red-tailed 411.0   1300  238
+## 252    Red-tailed 380.0   1040  212
+## 253    Red-tailed 370.0    950  215
+## 254    Red-tailed 415.0   1320  235
+## 255    Red-tailed 410.0   1280  229
+## 256    Red-tailed 412.0   1310  251
+## 257    Red-tailed 384.0    910  215
+## 258    Red-tailed 404.0   1220  225
+## 259    Red-tailed 375.0    920  210
+## 260    Red-tailed 410.0   1135  267
+## 261    Red-tailed 384.0    940  220
+## 262    Red-tailed 385.0    920  238
+## 263    Red-tailed 398.0   1280  248
+## 264    Red-tailed 425.0   1220  241
+## 265    Red-tailed 401.0   1000  212
+## 266    Red-tailed 387.0   1120  221
+## 267    Red-tailed 376.0    925  233
+## 268    Red-tailed 420.0   1280  230
+## 269    Red-tailed 385.0    985  223
+## 270    Red-tailed 405.0   1350  226
+## 271    Red-tailed 350.0    730  208
+## 272    Red-tailed 388.0    890  231
+## 273    Red-tailed 398.0   1020  217
+## 274    Red-tailed 410.0   1000  230
+## 275    Red-tailed 382.0   1020  225
+## 276    Red-tailed 111.0   1340  226
+## 277    Red-tailed 396.0   1300  214
+## 278    Red-tailed 363.0   1015  242
+## 279    Red-tailed 360.0    900  220
+## 280    Red-tailed 390.0   1000  250
+## 281    Red-tailed 390.0   1050  220
+## 282    Red-tailed 380.0    950  240
+## 283    Red-tailed 415.0   1175  230
+## 284    Red-tailed 354.0    980  220
+## 285    Red-tailed 417.0   1260  234
+## 286    Red-tailed 379.0   1050  226
+## 287    Red-tailed 412.0   1330  218
+## 288    Red-tailed 377.0    980  209
+## 289    Red-tailed 372.0    920  228
+## 290    Red-tailed 420.0   1540  235
+## 291    Red-tailed 368.0   1060  223
+## 292    Red-tailed 406.0   1420  245
+## 293    Red-tailed 392.0   1142  235
+## 294    Red-tailed 365.0    813  221
+## 295    Red-tailed 352.0   1024  216
+## 296    Red-tailed 370.0   1023  216
+## 297    Red-tailed 230.0    340  200
+## 298    Red-tailed 364.0    917  216
+## 299    Red-tailed 367.0    946  221
+## 300    Red-tailed 233.0    337  196
+## 301    Red-tailed 362.0    832  210
+## 302    Red-tailed 368.0   1244  220
+## 303    Red-tailed 368.0   1244  220
+## 304    Red-tailed 367.0    974  221
+## 305    Red-tailed 400.0   1289  242
+## 306    Red-tailed 379.0    999  220
+## 307    Red-tailed 360.0    994  210
+## 308    Red-tailed 362.0   1004  221
+## 309    Red-tailed 378.0   1097  236
+## 310    Red-tailed 372.0   1092  235
+## 311    Red-tailed 369.0   1049  231
+## 312    Red-tailed 354.0    998  227
+## 313    Red-tailed 367.0   1091  238
+## 314    Red-tailed 349.0    987  225
+## 315    Red-tailed 375.0   1151  249
+## 316    Red-tailed 343.0    971  213
+## 317    Red-tailed 360.0   1159  240
+## 318    Red-tailed 395.0   1239  231
+## 319    Red-tailed 400.0   1216  227
+## 320    Red-tailed 369.0   1039  223
+## 321    Red-tailed 365.0   1079  228
+## 322    Red-tailed 375.0   1159  242
+## 323    Red-tailed 382.0   1403  247
+## 324    Red-tailed 478.0   1473  267
+## 325    Red-tailed 469.0   1001  257
+## 326    Red-tailed 373.0    914  221
+## 327    Red-tailed 386.0   1059  214
+## 328    Red-tailed 384.0   1147  229
+## 329    Red-tailed 351.0    949  213
+## 330    Red-tailed 363.0    973  213
+## 331    Red-tailed 374.0   1064  201
+## 332    Red-tailed 369.0    749  216
+## 333    Red-tailed 374.0   1213  244
+## 334    Red-tailed 389.0   1200  230
+## 335    Red-tailed 379.0   1040  227
+## 336    Red-tailed 373.0    919  233
+## 337    Red-tailed 403.0   1487  240
+## 338    Red-tailed 400.0   1254  237
+## 339    Red-tailed 405.0   1189  210
+## 340    Red-tailed 382.0    979  225
+## 341    Red-tailed 407.0   1339  246
+## 342    Red-tailed 403.0   1199  225
+## 343    Red-tailed 406.0   1344  230
+## 344    Red-tailed 381.0    969  220
+## 345    Red-tailed 395.0   1039  230
+## 346    Red-tailed 410.0   1054  233
+## 347    Red-tailed 425.0   1449  232
+## 348    Red-tailed 402.0    985  234
+## 349    Red-tailed 480.0   1598  239
+## 350    Red-tailed 412.0    992  230
+## 351    Red-tailed 381.0   1354  213
+## 352    Red-tailed 392.0    969  207
+## 353    Red-tailed 382.0   1080  214
+## 354    Red-tailed 391.0   1097  217
+## 355    Red-tailed 397.0   1439  216
+## 356    Red-tailed 361.0     NA  214
+## 357    Red-tailed 376.0   1019  216
+## 358    Red-tailed 410.0   1239  222
+## 359    Red-tailed 381.0   1399  288
+## 360    Red-tailed 396.0   1169  238
+## 361    Red-tailed 383.0   1164  199
+## 362    Red-tailed 271.0     NA  235
+## 363    Red-tailed 392.0    890  219
+## 364    Red-tailed 395.0   1215  236
+## 365    Red-tailed 370.0   1030  225
+## 366    Red-tailed 376.0    985  223
+## 367    Red-tailed 372.0    975  225
+## 368    Red-tailed 391.0   1165  241
+## 369    Red-tailed 364.0   1044  210
+## 370    Red-tailed 381.0   1080  223
+## 371    Red-tailed 375.0    890  219
+## 372    Red-tailed 392.0   1105  229
+## 373    Red-tailed 398.0   1310  211
+## 374    Red-tailed 371.0    895  204
+## 375    Red-tailed 367.0   1060  204
+## 376    Red-tailed 375.0    960  214
+## 377    Red-tailed 408.0   1270  236
+## 378    Red-tailed 399.0   1170  247
+## 379    Red-tailed 388.0   1225  227
+## 380    Red-tailed 370.0   1060  225
+## 381    Red-tailed 363.0    850  220
+## 382    Red-tailed 371.0   1145  215
+## 383    Red-tailed 386.0   1090  226
+## 384    Red-tailed 400.0   1345  227
+## 385    Red-tailed 390.0   1050  236
+## 386    Red-tailed 382.0   1040  210
+## 387    Red-tailed 354.0    965  226
+## 388    Red-tailed 403.0   1105  242
+## 389    Red-tailed 375.0   1045  221
+## 390    Red-tailed 369.0    900  220
+## 391    Red-tailed 368.0   1015  219
+## 392    Red-tailed 393.0   1385  225
+## 393    Red-tailed 370.0   1165  221
+## 394    Red-tailed 378.0    905  215
+## 395    Red-tailed 369.0    985  223
+## 396    Red-tailed 364.0    800  219
+## 397    Red-tailed 387.0    995  235
+## 398    Red-tailed 410.0   1460  216
+## 399    Red-tailed 410.0   1585  130
+## 400    Red-tailed 373.0    920  223
+## 401    Red-tailed 390.0   1460  221
+## 402    Red-tailed 404.0   1315  220
+## 403    Red-tailed 375.0   1019  186
+## 404    Red-tailed 395.0   1215  217
+## 405    Red-tailed 379.0   1005  209
+## 406    Red-tailed 382.0   1350  215
+## 407    Red-tailed 404.0   1145  214
+## 408    Red-tailed 377.0   1010  207
+## 409    Red-tailed 390.0   1120  210
+## 410    Red-tailed 404.0    280  224
+## 411    Red-tailed 351.0    775  200
+## 412    Red-tailed 394.0   1210  207
+## 413    Red-tailed 372.0    909  212
+## 414    Red-tailed 376.0   1145  226
+## 415    Red-tailed 399.0   1150  232
+## 416    Red-tailed 399.0   1560  228
+## 417    Red-tailed 357.0    940  205
+## 418    Red-tailed 400.0   1089  228
+## 419    Red-tailed 382.0   1194  237
+## 420    Red-tailed 390.0   1015  230
+## 421    Red-tailed 379.0    975  219
+## 422    Red-tailed 376.0   1035  223
+## 423    Red-tailed 331.0   1055  210
+## 424    Red-tailed 371.0    945  222
+## 425    Red-tailed 361.0    785  201
+## 426    Red-tailed 394.0   1220  234
+## 427    Red-tailed 358.0   1025  204
+## 428    Red-tailed 380.0   1000  204
+## 429    Red-tailed 397.0   1210  224
+## 430    Red-tailed 392.0   1185  229
+## 431    Red-tailed 406.0     NA  222
+## 432    Red-tailed 363.0    950  214
+## 433    Red-tailed 374.0    895  219
+## 434    Red-tailed 412.0   1150  230
+## 435    Red-tailed 388.0    950  230
+## 436    Red-tailed 371.0    990  217
+## 437    Red-tailed 391.0   1120  225
+## 438    Red-tailed 410.0   1120  229
+## 439    Red-tailed 368.0    820  215
+## 440    Red-tailed 410.0   1200  247
+## 441    Red-tailed 425.0   1120  222
+## 442    Red-tailed 368.0   1120  220
+## 443    Red-tailed 392.0   1220  234
+## 444    Red-tailed 418.0   1310  248
+## 445    Red-tailed 370.0    920  221
+## 446    Red-tailed 370.0    955  218
+## 447    Red-tailed 408.0   1225  225
+## 448    Red-tailed 393.0   1400  215
+## 449    Red-tailed 365.0   1025  225
+## 450    Red-tailed 405.0   1140  244
+## 451    Red-tailed 381.0   1080  232
+## 452    Red-tailed 390.0   1135  238
+## 453    Red-tailed 384.0   1430  231
+## 454    Red-tailed 390.0   1050  218
+## 455    Red-tailed 381.0    920  223
+## 456    Red-tailed 371.0    905  197
+## 457    Red-tailed 356.0    915  195
+## 458    Red-tailed 377.0    910  206
+## 459    Red-tailed 362.0    950  213
+## 460    Red-tailed 400.0   1225  222
+## 461    Red-tailed 387.0   1090  227
+## 462    Red-tailed 409.0   1350  235
+## 463    Red-tailed 385.0    940  228
+## 464    Red-tailed 377.0    920  219
+## 465    Red-tailed 400.0   1190  231
+## 466    Red-tailed 363.0    915  209
+## 467    Red-tailed 403.0   1310  237
+## 468    Red-tailed 375.0    950  210
+## 469    Red-tailed 373.0    975  215
+## 470    Red-tailed 373.0    990  217
+## 471    Red-tailed 373.0   1270  207
+## 472    Red-tailed 354.0    960  211
+## 473    Red-tailed 394.0   1290  225
+## 474    Red-tailed 377.0   1045  223
+## 475    Red-tailed 364.0   1090  218
+## 476    Red-tailed 385.0   1180  222
+## 477    Red-tailed 390.0   1195  235
+## 478    Red-tailed 383.0   1055  208
+## 479    Red-tailed 365.0   1025  216
+## 480    Red-tailed 376.0    940  217
+## 481    Red-tailed 402.0   1335  219
+## 482    Red-tailed 394.0   1085  235
+## 483    Red-tailed 378.0   1090  212
+## 484    Red-tailed 369.0    995  211
+## 485    Red-tailed 378.0   1090  201
+## 486    Red-tailed 262.0   1020  200
+## 487    Red-tailed 379.0   1000  217
+## 488    Red-tailed 380.0   1085  223
+## 489    Red-tailed 380.0   1045  199
+## 490    Red-tailed 393.0   1060  217
+## 491    Red-tailed 389.0   1135  207
+## 492    Red-tailed 395.0   1210  222
+## 493    Red-tailed 367.0    965  217
+## 494    Red-tailed 368.0    905  200
+## 495    Red-tailed 377.0   1125  220
+## 496    Red-tailed 374.0    950  216
+## 497    Red-tailed 385.0   1195  216
+## 498    Red-tailed 363.0   1005  222
+## 499    Red-tailed 378.0    995  213
+## 500    Red-tailed 405.0   1170  226
+## 501    Red-tailed 392.0   1085  210
+## 502    Red-tailed 395.0   1115  235
+## 503    Red-tailed 390.0   1195  222
+## 504    Red-tailed 389.0   1165  223
+## 505    Red-tailed 378.0    235  223
+## 506    Red-tailed 385.0   1085  216
+## 507    Red-tailed 369.0    970  207
+## 508    Red-tailed 378.0   1030  218
+## 509    Red-tailed 373.0   1015  215
+## 510    Red-tailed 419.0   1030  224
+## 511    Red-tailed 414.0   1215  242
+## 512    Red-tailed 404.0   1170  237
+## 513    Red-tailed 379.0   1435  221
+## 514    Red-tailed 407.0   1235  243
+## 515    Red-tailed 376.0   1055  222
+## 516    Red-tailed 380.0   1105  208
+## 517    Red-tailed 408.0   1390  245
+## 518    Red-tailed 374.0   1080  206
+## 519    Red-tailed 376.0    910  220
+## 520    Red-tailed 370.0    845  217
+## 521    Red-tailed 363.0    865  210
+## 522    Red-tailed 372.0   2030  196
+## 523    Red-tailed 378.0    960  206
+## 524    Red-tailed 361.0    970  218
+## 525    Red-tailed 389.0   1265  210
+## 526    Red-tailed 404.0   1300  224
+## 527    Red-tailed 395.0   1170  218
+## 528    Red-tailed 368.0   1075  213
+## 529    Red-tailed 401.0    965  235
+## 530    Red-tailed 355.0    785  206
+## 531    Red-tailed 377.0   1095  206
+## 532    Red-tailed 277.0   1500  207
+## 533    Red-tailed 435.0   1595  230
+## 534    Red-tailed 372.0    985  224
+## 535    Red-tailed 390.0    240  218
+## 536    Red-tailed 359.0    875  215
+## 537    Red-tailed 393.0   1225  226
+## 538    Red-tailed 402.0   1255  242
+## 539    Red-tailed 362.0    950  212
+## 540    Red-tailed 359.0    895  201
+## 541    Red-tailed 362.0   1305  234
+## 542    Red-tailed 375.0    975  220
+## 543    Red-tailed 388.0   1185  225
+## 544    Red-tailed 392.0   1030  214
+## 545    Red-tailed 412.0   1215  230
+## 546    Red-tailed 371.0   1075  220
+## 547    Red-tailed 391.0    795  209
+## 548    Red-tailed 385.0   1225  225
+## 549    Red-tailed 370.0    920  226
+## 550    Red-tailed 400.0   1315  230
+## 551    Red-tailed 395.0   1155  233
+## 552    Red-tailed 403.0   1160  235
+## 553    Red-tailed 386.0    955  226
+## 554    Red-tailed 361.0   1030  231
+## 555    Red-tailed 377.0   1040  225
+## 556    Red-tailed 361.0    910  205
+## 557    Red-tailed 375.0   1005  226
+## 558    Red-tailed 401.0   1250  230
+## 559    Red-tailed 407.0   1275  238
+## 560    Red-tailed 375.0   1030  217
+## 561    Red-tailed 406.0   1290  227
+## 562    Red-tailed 386.0   1020  230
+## 563    Red-tailed 378.0   1055  217
+## 564    Red-tailed 379.0   1010  216
+## 565    Red-tailed 364.0   1015  215
+## 566    Red-tailed 350.0   1115  199
+## 567    Red-tailed 380.0   1320  210
+## 568    Red-tailed 395.0   1180  217
+## 569    Red-tailed 372.0   1145  212
+## 570    Red-tailed 376.0    995  223
+## 571    Red-tailed 367.0   1045  215
+## 572    Red-tailed 366.0    935  218
+## 573    Red-tailed 386.0   1065  221
+## 574    Red-tailed 375.0   1110  215
+## 575    Red-tailed 405.0   1255  218
+## 576    Red-tailed 371.0   1015  204
+## 577    Red-tailed 350.0    960  218
+## 578    Red-tailed 368.0   1090  216
+## 579    Red-tailed 372.0   1085  220
+## 580    Red-tailed 396.0   1065  230
+## 581    Red-tailed 365.0   1125  213
+## 582    Red-tailed 374.0   1050  220
+## 583    Red-tailed 372.0    980  215
+## 584    Red-tailed 376.0   1180  214
+## 585    Red-tailed 369.0   1095  215
+## 586    Red-tailed 391.0   1330  217
+## 587    Red-tailed 397.0   1100  219
+## 588    Red-tailed 366.0   1115  215
+## 589    Red-tailed 385.0   1400  211
+## 590    Red-tailed 400.0   1175  234
+## 591    Red-tailed 365.0    970  208
+## 592    Red-tailed 384.0   1260  226
+## 593    Red-tailed 396.0   1195  228
+## 594    Red-tailed 391.0   1035  221
+## 595    Red-tailed 393.0   1155  223
+## 596    Red-tailed 397.0   1260  232
+## 597    Red-tailed 384.0   1010  230
+## 598    Red-tailed 385.0    990  225
+## 599    Red-tailed 379.0    945  224
+## 600    Red-tailed 367.0    970  215
+## 601    Red-tailed 396.0   1240  237
+## 602    Red-tailed 428.0   1290  253
+## 603    Red-tailed 364.0   1150  196
+## 604    Red-tailed 370.0    960  217
+## 605    Red-tailed 400.0   1130  227
+## 606    Red-tailed 375.0    925  220
+## 607    Red-tailed 398.0   1205  227
+## 608    Red-tailed 385.0   1040  238
+## 609    Red-tailed 376.0    860  220
+## 610    Red-tailed 360.0    935  212
+## 611    Red-tailed 372.0   1010  197
+## 612    Red-tailed 400.0   1285  230
+## 613    Red-tailed 370.0    830  233
+## 614    Red-tailed 403.0   1350  140
+## 615    Red-tailed 375.0   1010  218
+## 616    Red-tailed 373.0    960  222
+## 617    Red-tailed 385.0   1370  233
+## 618    Red-tailed 392.0   1250  222
+## 619    Red-tailed 372.0    915  203
+## 620    Red-tailed 375.0    850  218
+## 621    Red-tailed 415.0   1285  242
+## 622    Red-tailed 380.0   1005  205
+## 623    Red-tailed 411.0   1220  236
+## 624    Red-tailed 393.0   1265  233
+## 625    Red-tailed 370.0   1020  211
+## 626    Red-tailed 365.0    895  217
+## 627    Red-tailed 371.0   1160  218
+## 628    Red-tailed 400.0   1585  241
+## 629    Red-tailed 382.0   1140  218
+## 630    Red-tailed 371.0   1115  208
+## 631    Red-tailed 370.0   1145  212
+## 632    Red-tailed 347.0    990  203
+## 633    Red-tailed 363.0    945  218
+## 634    Red-tailed 392.0   1030  196
+## 635    Red-tailed 365.0    990  217
+## 636    Red-tailed 387.0   1065  212
+## 637    Red-tailed 400.0   1050  237
+## 638    Red-tailed 362.0    840  206
+## 639    Red-tailed 370.0   1000  201
+## 640    Red-tailed 360.0   1325  224
+## 641    Red-tailed 366.0    945  199
+## 642    Red-tailed 402.0   1350  219
+## 643    Red-tailed 366.0    805  217
+## 644    Red-tailed 380.0   1525  224
+## 645    Red-tailed 360.0    790  211
+## 646    Red-tailed 369.0    860  207
+## 647    Red-tailed 199.0   1290  222
+## 648 Sharp-shinned 205.0    170  157
+## 649 Sharp-shinned 173.0    100  130
+## 650 Sharp-shinned 205.0    180  164
+## 651 Sharp-shinned 193.0    100  144
+## 652 Sharp-shinned 171.0     88  136
+## 653 Sharp-shinned 202.0    134  158
+## 654 Sharp-shinned 158.0    100  122
+## 655 Sharp-shinned 176.0    100  133
+## 656 Sharp-shinned 194.0     NA  154
+## 657 Sharp-shinned 205.0    194  155
+## 658 Sharp-shinned 204.0    159  152
+## 659 Sharp-shinned 170.0     90  135
+## 660 Sharp-shinned 208.0    168  155
+## 661 Sharp-shinned 208.0    146  160
+## 662 Sharp-shinned 175.0    108  137
+## 663 Sharp-shinned 166.0     94  127
+## 664 Sharp-shinned 198.0    188  150
+## 665 Sharp-shinned 200.0    154  150
+## 666 Sharp-shinned 169.0     94  129
+## 667 Sharp-shinned 177.0     91  133
+## 668 Sharp-shinned 170.0     89  136
+## 669 Sharp-shinned 177.0     97  137
+## 670 Sharp-shinned 170.0     93  126
+## 671 Sharp-shinned 173.0    103  137
+## 672 Sharp-shinned 209.0    151  160
+## 673 Sharp-shinned 177.0    101  140
+## 674 Sharp-shinned 179.0     95  133
+## 675 Sharp-shinned 172.0     89  136
+## 676 Sharp-shinned 202.0    195  151
+## 677 Sharp-shinned 174.0     93  131
+## 678 Sharp-shinned 171.0    100  134
+## 679 Sharp-shinned 204.0    168  155
+## 680 Sharp-shinned 197.0    211  150
+## 681 Sharp-shinned 209.0    196  164
+## 682 Sharp-shinned 209.0    176  159
+## 683 Sharp-shinned 204.0    180  160
+## 684 Sharp-shinned 204.0    164  157
+## 685 Sharp-shinned 209.0    158  160
+## 686 Sharp-shinned 209.0    169  164
+## 687 Sharp-shinned 213.0    190  160
+## 688 Sharp-shinned 172.0    105  125
+## 689 Sharp-shinned 204.0    190  154
+## 690 Sharp-shinned 201.0    206  151
+## 691 Sharp-shinned 202.0    195  158
+## 692 Sharp-shinned 200.0    160  153
+## 693 Sharp-shinned 179.0    105  131
+## 694 Sharp-shinned 175.0     99  145
+## 695 Sharp-shinned 203.0    165  165
+## 696 Sharp-shinned 205.0    100  168
+## 697 Sharp-shinned 213.0    125  156
+## 698 Sharp-shinned 202.0     NA  164
+## 699 Sharp-shinned 195.0    155  155
+## 700 Sharp-shinned 203.0    150  159
+## 701 Sharp-shinned 201.0    130  156
+## 702 Sharp-shinned 178.0     90  145
+## 703 Sharp-shinned 215.0    180  132
+## 704 Sharp-shinned 171.0     90  138
+## 705 Sharp-shinned 202.0    150  153
+## 706 Sharp-shinned 204.0    180  186
+## 707 Sharp-shinned 195.0    150  178
+## 708 Sharp-shinned 191.0    157  158
+## 709 Sharp-shinned 161.0     98  133
+## 710 Sharp-shinned 156.0     94  125
+## 711 Sharp-shinned 191.0    155  158
+## 712 Sharp-shinned 198.0    181  159
+## 713 Sharp-shinned 160.0     92  132
+## 714 Sharp-shinned 164.0     98  136
+## 715 Sharp-shinned 163.0    100  137
+## 716 Sharp-shinned 193.0    186  155
+## 717 Sharp-shinned 190.0    164  155
+## 718 Sharp-shinned 165.0     98  138
+## 719 Sharp-shinned 162.0     NA  130
+## 720 Sharp-shinned 198.0    158  154
+## 721 Sharp-shinned 157.0     92  132
+## 722 Sharp-shinned 260.0    550  215
+## 723 Sharp-shinned 259.0    439  218
+## 724 Sharp-shinned 165.0     92  135
+## 725 Sharp-shinned 370.0   1094  221
+## 726 Sharp-shinned 201.0    185  162
+## 727 Sharp-shinned 193.0    181  150
+## 728 Sharp-shinned 170.0    177  155
+## 729 Sharp-shinned 230.0    162  149
+## 730 Sharp-shinned 168.0    175  158
+## 731 Sharp-shinned 172.0     98  148
+## 732 Sharp-shinned 168.0    102  138
+## 733 Sharp-shinned 199.0    196  158
+## 734 Sharp-shinned 202.0    201  165
+## 735 Sharp-shinned 202.0    180  160
+## 736 Sharp-shinned 170.0    113  139
+## 737 Sharp-shinned 205.0    156  144
+## 738 Sharp-shinned 165.0     96  125
+## 739 Sharp-shinned 170.0    101  135
+## 740 Sharp-shinned 210.0    181  170
+## 741 Sharp-shinned 196.0    185  146
+## 742 Sharp-shinned 203.0    176  161
+## 743 Sharp-shinned 196.0    160  137
+## 744 Sharp-shinned 168.0    105  143
+## 745 Sharp-shinned 163.0    100  128
+## 746 Sharp-shinned 205.0     NA  161
+## 747 Sharp-shinned 163.0    100  131
+## 748 Sharp-shinned 197.0    165  150
+## 749 Sharp-shinned 165.0     95  136
+## 750 Sharp-shinned 202.0    180  160
+## 751 Sharp-shinned 163.0    125  135
+## 752 Sharp-shinned 193.0    165  146
+## 753 Sharp-shinned 200.0    175  155
+## 754 Sharp-shinned 192.0    170  159
+## 755 Sharp-shinned 167.0    100  132
+## 756 Sharp-shinned 162.0    110  130
+## 757 Sharp-shinned 199.0    165  161
+## 758 Sharp-shinned 199.0    200  169
+## 759 Sharp-shinned 196.0    155  164
+## 760 Sharp-shinned 194.0    155  153
+## 761 Sharp-shinned 194.0    165  151
+## 762 Sharp-shinned 194.0    185  154
+## 763 Sharp-shinned 205.0    175  169
+## 764 Sharp-shinned 184.0    155  153
+## 765 Sharp-shinned 175.0    107  137
+## 766 Sharp-shinned 169.0     95  132
+## 767 Sharp-shinned 195.0    145  155
+## 768 Sharp-shinned 161.0     95  135
+## 769 Sharp-shinned 160.0     90  124
+## 770 Sharp-shinned 191.0    175  149
+## 771 Sharp-shinned 188.0    175  154
+## 772 Sharp-shinned 196.0    180  150
+## 773 Sharp-shinned 190.0    175  147
+## 774 Sharp-shinned 161.0     90  130
+## 775 Sharp-shinned 190.0     NA  153
+## 776 Sharp-shinned 162.0     85  132
+## 777 Sharp-shinned 163.0     90  123
+## 778 Sharp-shinned 250.0    470  192
+## 779 Sharp-shinned 170.0    100  132
+## 780 Sharp-shinned 203.0    180  162
+## 781 Sharp-shinned 194.0    175  152
+## 782 Sharp-shinned 165.0    105  127
+## 783 Sharp-shinned 155.0    100  122
+## 784 Sharp-shinned 161.0    105  124
+## 785 Sharp-shinned 195.0    200  158
+## 786 Sharp-shinned 196.0    200  150
+## 787 Sharp-shinned 169.0    100  133
+## 788 Sharp-shinned 164.0     90  127
+## 789 Sharp-shinned 165.0     95  127
+## 790 Sharp-shinned 166.0    120  133
+## 791 Sharp-shinned 170.0    110  135
+## 792 Sharp-shinned 165.0     95  131
+## 793 Sharp-shinned 201.0    175  157
+## 794 Sharp-shinned 165.0    100  137
+## 795 Sharp-shinned 207.0    185  163
+## 796 Sharp-shinned 164.0     95  136
+## 797 Sharp-shinned 199.0    175  142
+## 798 Sharp-shinned 200.0    165  154
+## 799 Sharp-shinned 194.0    145  156
+## 800 Sharp-shinned 190.0    175  160
+## 801 Sharp-shinned 195.0    170  149
+## 802 Sharp-shinned 161.0    105  131
+## 803 Sharp-shinned 168.0     95  137
+## 804 Sharp-shinned 160.0     95  126
+## 805 Sharp-shinned 201.0    165  165
+## 806 Sharp-shinned 161.0    100  129
+## 807 Sharp-shinned 192.0    170  156
+## 808 Sharp-shinned 156.0     90  135
+## 809 Sharp-shinned 158.0     95  129
+## 810 Sharp-shinned 167.0    115  131
+## 811 Sharp-shinned 199.0    155  160
+## 812 Sharp-shinned 199.0    180  152
+## 813 Sharp-shinned 164.0    105  132
+## 814 Sharp-shinned 203.0    185  157
+## 815 Sharp-shinned 162.0     95  119
+## 816 Sharp-shinned 165.0     95  130
+## 817 Sharp-shinned 161.0     95  124
+## 818 Sharp-shinned 161.0    110  130
+## 819 Sharp-shinned 165.0    105  140
+## 820 Sharp-shinned 199.0    175  159
+## 821 Sharp-shinned 171.0     95  138
+## 822 Sharp-shinned 213.0    190  159
+## 823 Sharp-shinned 169.0    105  136
+## 824 Sharp-shinned 172.0    120  132
+## 825 Sharp-shinned 167.0    105  131
+## 826 Sharp-shinned 202.0    175  162
+## 827 Sharp-shinned 200.0    180  163
+## 828 Sharp-shinned 195.0    170  154
+## 829 Sharp-shinned 203.0    191  161
+## 830 Sharp-shinned 199.0    185  157
+## 831 Sharp-shinned 194.0    165  158
+## 832 Sharp-shinned 196.0    205  156
+## 833 Sharp-shinned 168.0     95  133
+## 834 Sharp-shinned 210.0    200  165
+## 835 Sharp-shinned 197.0    160  153
+## 836 Sharp-shinned 171.0     95  135
+## 837 Sharp-shinned 155.0    100  129
+## 838 Sharp-shinned 160.0     90  132
+## 839 Sharp-shinned 166.0    105  131
+## 840 Sharp-shinned 190.0    180  156
+## 841 Sharp-shinned 166.0    110  139
+## 842 Sharp-shinned 197.0    165  159
+## 843 Sharp-shinned 190.0    170  154
+## 844 Sharp-shinned 162.0    100  131
+## 845 Sharp-shinned 194.0    155  156
+## 846 Sharp-shinned 193.0    190  145
+## 847 Sharp-shinned 203.0    180  156
+## 848 Sharp-shinned 159.0     90  130
+## 849 Sharp-shinned 163.0    100  130
+## 850 Sharp-shinned 191.0    190  147
+## 851 Sharp-shinned 166.0    105  141
+## 852 Sharp-shinned 193.0    180  156
+## 853 Sharp-shinned 196.0    175  153
+## 854 Sharp-shinned 159.0    105  131
+## 855 Sharp-shinned 192.0    190  155
+## 856 Sharp-shinned 198.0    185  165
+## 857 Sharp-shinned 162.0    105  132
+## 858 Sharp-shinned 168.0    100  135
+## 859 Sharp-shinned 168.0    105  134
+## 860 Sharp-shinned 160.0    105  136
+## 861 Sharp-shinned 193.0    185  154
+## 862 Sharp-shinned 199.0    190  163
+## 863 Sharp-shinned 193.0    190  151
+## 864 Sharp-shinned 193.0    200  155
+## 865 Sharp-shinned 185.0    170  156
+## 866 Sharp-shinned 166.0    115  136
+## 867 Sharp-shinned 193.0    185  158
+## 868 Sharp-shinned 198.0    185  161
+## 869 Sharp-shinned 194.0    170  153
+## 870 Sharp-shinned 195.0    175  152
+## 871 Sharp-shinned 200.0    165  163
+## 872 Sharp-shinned 159.0    110  125
+## 873 Sharp-shinned 161.0    100  134
+## 874 Sharp-shinned 191.0    190  162
+## 875 Sharp-shinned 161.0     90  123
+## 876 Sharp-shinned 160.0     90  131
+## 877 Sharp-shinned 183.0    160  143
+## 878 Sharp-shinned 156.0     85  129
+## 879 Sharp-shinned 159.0     95  125
+## 880 Sharp-shinned 197.0    175  150
+## 881 Sharp-shinned 196.0    160  158
+## 882 Sharp-shinned 181.0    150  141
+## 883 Sharp-shinned 201.0    188  162
+## 884 Sharp-shinned 161.0     95  131
+## 885 Sharp-shinned 159.0     95  132
+## 886 Sharp-shinned 157.0    105  133
+## 887 Sharp-shinned 191.0    165  156
+## 888 Sharp-shinned 191.0    170  163
+## 889 Sharp-shinned 168.0    100  134
+## 890 Sharp-shinned 192.0    175  160
+## 891 Sharp-shinned 195.0    195  158
+## 892 Sharp-shinned 156.0    100  122
+## 893 Sharp-shinned 163.0    105  137
+## 894 Sharp-shinned 194.0    210  147
+## 895 Sharp-shinned 160.0     95  135
+## 896 Sharp-shinned 143.0    170  159
+## 897 Sharp-shinned 162.0    100  136
+## 898 Sharp-shinned 161.0     95  129
+## 899 Sharp-shinned 161.0     95  121
+## 900 Sharp-shinned 165.0    100  134
+## 901 Sharp-shinned 194.0    185  152
+## 902 Sharp-shinned 195.0    165  153
+## 903 Sharp-shinned 193.0    105  156
+## 904 Sharp-shinned 198.0    190  158
+## 905 Sharp-shinned 190.0    200  157
+## 906 Sharp-shinned 197.0    185  157
+## 907 Sharp-shinned 200.0    185  158
+## 908 Sharp-shinned 190.0    175  150
+\end{verbatim}
+
+\#1 \#\#1.4 \#\#\#q1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{BMI}\OtherTok{=}\NormalTok{Hawks }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Species,Weight,Wing) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{BMI=}\DecValTok{1000}\SpecialCharTok{*}\NormalTok{Weight}\SpecialCharTok{/}\NormalTok{Wing}\SpecialCharTok{/}\NormalTok{Wing) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(BMI)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Species,BMI)}
+\FunctionTok{head}\NormalTok{(BMI)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Species       BMI
+## 1      RT 852.69973
+## 2      RT 108.75741
+## 3      RT  32.57493
+## 4      RT  22.72688
+## 5      CH  22.40818
+## 6      RT  19.54932
+\end{verbatim}
+
+\#1 \#\#1.5 \#\#\#q1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sumHawks}\OtherTok{=}\NormalTok{hawksFullName }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Species) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{num\_rows=}\FunctionTok{n}\NormalTok{(),}\AttributeTok{mn\_wing=}\FunctionTok{mean}\NormalTok{(Wing),}\AttributeTok{md\_wing=}\FunctionTok{median}\NormalTok{(Wing,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}\AttributeTok{t\_mn\_wing=}\FunctionTok{mean}\NormalTok{(Wing,}\AttributeTok{trim =} \FloatTok{0.1}\NormalTok{),}\AttributeTok{b\_wt\_ratio=}\FunctionTok{max}\NormalTok{(Wing}\SpecialCharTok{/}\NormalTok{Tail,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{))}
+\FunctionTok{head}\NormalTok{(sumHawks)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 6
+##   Species       num_rows mn_wing md_wing t_mn_wing b_wt_ratio
+##   <chr>            <int>   <dbl>   <dbl>     <dbl>      <dbl>
+## 1 Cooper's            70     NA      240       NA        1.67
+## 2 Red-tailed         577    383.     384      385.       3.16
+## 3 Sharp-shinned      261    185.     191      184.       1.67
+\end{verbatim}
+
+\#\#\#q2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num\_nas\_hawks }\OtherTok{\textless{}{-}}\NormalTok{ Hawks }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Species,Wing,Weight,Culmen,Hallux,Tail,StandardTail,Tarsus,Crop) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Species) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{Wing=}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(Wing)), }\AttributeTok{Weight=}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(Weight)), }\AttributeTok{Culmen=}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(Culmen)), }\AttributeTok{Hallux=}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(Hallux)), }\AttributeTok{Tail=}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(Tail)), }\AttributeTok{StandardTail=}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(StandardTail)), }\AttributeTok{Tarsus=}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(Tarsus)), }\AttributeTok{Crop=}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(Crop)))}
+\FunctionTok{print}\NormalTok{(num\_nas\_hawks)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 9
+##   Species  Wing Weight Culmen Hallux  Tail StandardTail Tarsus  Crop
+##   <fct>   <int>  <int>  <int>  <int> <int>        <int>  <int> <int>
+## 1 CH          1      0      0      0     0           19     62    21
+## 2 RT          0      5      4      3     0          250    538   254
+## 3 SS          0      5      3      3     0           68    233    68
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num\_nas\_hawks }\OtherTok{\textless{}{-}}\NormalTok{ Hawks }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Species,Wing,Weight,Culmen,Hallux,Tail,StandardTail,Tarsus,Crop) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Species) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), }\SpecialCharTok{\textasciitilde{}}\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(.x))))}
+\FunctionTok{print}\NormalTok{(num\_nas\_hawks)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 9
+##   Species  Wing Weight Culmen Hallux  Tail StandardTail Tarsus  Crop
+##   <fct>   <int>  <int>  <int>  <int> <int>        <int>  <int> <int>
+## 1 CH          1      0      0      0     0           19     62    21
+## 2 RT          0      5      4      3     0          250    538   254
+## 3 SS          0      5      3      3     0           68    233    68
+\end{verbatim}
+
+\#2 \#\#2.1 \#\#\#q1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{impute\_by\_mean}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  mu}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(x,}\AttributeTok{na.rm=}\DecValTok{1}\NormalTok{) }\CommentTok{\# first compute the mean of x }
+\NormalTok{  impute\_f}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(z)\{ }\CommentTok{\# coordinate{-}wise imputation}
+  \ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(z))\{}
+    \FunctionTok{return}\NormalTok{(mu) }\CommentTok{\# if z is na replace with mean }
+\NormalTok{    \}}\ControlFlowTok{else}\NormalTok{\{}
+      \FunctionTok{return}\NormalTok{(z) }\CommentTok{\# otherwise leave in place }
+\NormalTok{    \}}
+\NormalTok{  \}}
+\FunctionTok{return}\NormalTok{(}\FunctionTok{map\_dbl}\NormalTok{(x,impute\_f)) }\CommentTok{\# apply the map function to impute across vector}
+\NormalTok{\}}
+\NormalTok{v}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{8}\NormalTok{,}\ConstantTok{NA}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\FunctionTok{impute\_by\_mean}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  4  5  6  8 NA  6
+\end{verbatim}
+
+\#\#\#q2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{impute\_by\_median}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{  mu}\OtherTok{\textless{}{-}}\FunctionTok{median}\NormalTok{(x,}\AttributeTok{na.rm=}\DecValTok{1}\NormalTok{) }\CommentTok{\# first compute the mean of x }
+\NormalTok{  impute\_f}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(z)\{ }\CommentTok{\# coordinate{-}wise imputation}
+  \ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(z))\{}
+    \FunctionTok{return}\NormalTok{(mu) }\CommentTok{\# if z is na replace with mean }
+\NormalTok{    \}}\ControlFlowTok{else}\NormalTok{\{}
+      \FunctionTok{return}\NormalTok{(z) }\CommentTok{\# otherwise leave in place }
+\NormalTok{    \}}
+\NormalTok{  \}}
+\FunctionTok{return}\NormalTok{(}\FunctionTok{map\_dbl}\NormalTok{(x,impute\_f)) }\CommentTok{\# apply the map function to impute across vector}
+\NormalTok{\}}
+\NormalTok{v}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\ConstantTok{NA}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\FunctionTok{impute\_by\_median}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 2 4
+\end{verbatim}
+
+\#\#\#q3
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 定义变量x的序列}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{)}
+
+\CommentTok{\# 计算变量y的值}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{5} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{1}
+
+\CommentTok{\# 创建数据框}
+\NormalTok{df\_xy }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =}\NormalTok{ x, }\AttributeTok{y =}\NormalTok{ y)}
+
+\CommentTok{\# 使用管道操作符显示前5行数据}
+\NormalTok{df\_xy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     x   y
+## 1 0.0 1.0
+## 2 0.1 1.5
+## 3 0.2 2.0
+## 4 0.3 2.5
+## 5 0.4 3.0
+\end{verbatim}
+
+\#\#\#q4
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sometimes\_missing}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(x,y)\{}
+  \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{\%\%}\DecValTok{5}\SpecialCharTok{==}\DecValTok{0}\NormalTok{)\{}
+    \FunctionTok{return}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\NormalTok{  \}}\ControlFlowTok{else}\NormalTok{\{}
+    \FunctionTok{return}\NormalTok{(y)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\FunctionTok{sometimes\_missing}\NormalTok{(}\DecValTok{14}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 25
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(purrr)}
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{10}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{df\_xy\_missing}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\NormalTok{x)}
+\NormalTok{df\_xy\_missing}\OtherTok{\textless{}{-}}\NormalTok{df\_xy\_missing }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{row\_number=}\FunctionTok{row\_number}\NormalTok{())}
+\NormalTok{df\_xy\_missing }\OtherTok{\textless{}{-}}\NormalTok{ df\_xy\_missing[, }\FunctionTok{c}\NormalTok{(}\StringTok{"row\_number"}\NormalTok{, }\StringTok{"x"}\NormalTok{)]}
+\NormalTok{create\_NA}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(x,y)\{}
+  \ControlFlowTok{if}\NormalTok{ (x}\SpecialCharTok{\%\%}\DecValTok{5}\SpecialCharTok{==}\DecValTok{0}\NormalTok{)\{}
+\NormalTok{    z}\OtherTok{=}\ConstantTok{NA}
+\NormalTok{  \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{    z}\OtherTok{=}\DecValTok{5}\SpecialCharTok{*}\NormalTok{y}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{  \}}
+\NormalTok{\}}
+\NormalTok{df\_xy\_missing}\OtherTok{\textless{}{-}}\NormalTok{df\_xy\_missing }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{y=}\FunctionTok{map2\_dbl}\NormalTok{(row\_number,x,}\SpecialCharTok{\textasciitilde{}} \FunctionTok{create\_NA}\NormalTok{(.x,.y)))}
+\NormalTok{df\_xy\_missing }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    row_number   x   y
+## 1           1 0.0 1.0
+## 2           2 0.1 1.5
+## 3           3 0.2 2.0
+## 4           4 0.3 2.5
+## 5           5 0.4  NA
+## 6           6 0.5 3.5
+## 7           7 0.6 4.0
+## 8           8 0.7 4.5
+## 9           9 0.8 5.0
+## 10         10 0.9  NA
+\end{verbatim}
+
+\#2 \#\#2.2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl) }\CommentTok{\# load the readxl library}
+\NormalTok{folder\_path }\OtherTok{\textless{}{-}} \StringTok{"E:/"}
+\CommentTok{\#folder\_path\textless{}{-}"E:/" \# set this to the name of the}
+\CommentTok{\# directory containing "HockeyLeague.xlsx"}
+\NormalTok{file\_name}\OtherTok{\textless{}{-}}\StringTok{"HockeyLeague.xlsx"} \CommentTok{\# set the file name}
+\NormalTok{file\_path}\OtherTok{\textless{}{-}}\FunctionTok{paste}\NormalTok{(folder\_path,file\_name,}\AttributeTok{sep=}\StringTok{""}\NormalTok{) }\CommentTok{\# create the file\_path}
+\NormalTok{wins\_data\_frame}\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(file\_path,}\AttributeTok{sheet=}\StringTok{"Wins"}\NormalTok{) }\CommentTok{\# read of a sheet from an xl file}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> `...1`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wins\_data\_frame }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 6
+##   ...1   `1990`   `1991`   `1992`   `1993`   `1994`  
+##   <chr>  <chr>    <chr>    <chr>    <chr>    <chr>   
+## 1 Ducks  30 of 50 11 of 50 30 of 50 12 of 50 24 of 50
+## 2 Eagles 24 of 50 12 of 50 37 of 50 14 of 50 32 of 50
+## 3 Hawks  20 of 50 22 of 50 33 of 50 11 of 50 20 of 50
+\end{verbatim}
+
+\#2 \#\#2.2 \#\#\#q1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyr)}
+\NormalTok{wins\_data\_frame}\OtherTok{\textless{}{-}}\NormalTok{wins\_data\_frame }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols=}\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"19"}\NormalTok{)}\SpecialCharTok{|}\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"20"}\NormalTok{),   }\CommentTok{\#指定需要转换的列（使用starts\_with函数选择列名以"Var"开头的列）}
+               \AttributeTok{names\_to =} \StringTok{"Year"}\NormalTok{,        }\CommentTok{\# 新列名，用于存储变量的名称}
+               \AttributeTok{values\_to =} \StringTok{"Win\_of\_games"}\NormalTok{)}
+\NormalTok{wins\_tidy }\OtherTok{\textless{}{-}}\NormalTok{ wins\_data\_frame }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(...}\DecValTok{1}\NormalTok{,Year,Win\_of\_games) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{separate}\NormalTok{(}\AttributeTok{col =}\NormalTok{ Win\_of\_games, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"Wins"}\NormalTok{, }\StringTok{"Total"}\NormalTok{), }\AttributeTok{sep =} \StringTok{"of"}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{Teams=}\NormalTok{...}\DecValTok{1}\NormalTok{)}
+\NormalTok{wins\_tidy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{dim}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 248   4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wins\_tidy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+##   Teams Year  Wins  Total
+##   <chr> <chr> <chr> <chr>
+## 1 Ducks 1990  "30 " " 50"
+## 2 Ducks 1991  "11 " " 50"
+## 3 Ducks 1992  "30 " " 50"
+## 4 Ducks 1993  "12 " " 50"
+## 5 Ducks 1994  "24 " " 50"
+## 6 Ducks 1995  "13 " " 50"
+\end{verbatim}
+
+\#2 \#\#2.2 \#\#\#q2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{folder\_path }\OtherTok{\textless{}{-}} \StringTok{"E:/"}
+\CommentTok{\#folder\_path\textless{}{-}"E:/" \# set this to the name of the}
+\CommentTok{\# directory containing "HockeyLeague.xlsx"}
+\NormalTok{file\_name}\OtherTok{\textless{}{-}}\StringTok{"HockeyLeague.xlsx"} \CommentTok{\# set the file name}
+\NormalTok{file\_path}\OtherTok{\textless{}{-}}\FunctionTok{paste}\NormalTok{(folder\_path,file\_name,}\AttributeTok{sep=}\StringTok{""}\NormalTok{) }\CommentTok{\# create the file\_path}
+\NormalTok{losses\_data\_frame}\OtherTok{\textless{}{-}}\FunctionTok{read\_excel}\NormalTok{(file\_path,}\AttributeTok{sheet=}\StringTok{"Losses"}\NormalTok{) }\CommentTok{\# read of a sheet from an xl file}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> `...1`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{losses\_data\_frame }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 6
+##   ...1   `1990`   `1991`   `1992`  `1993`   `1994`  
+##   <chr>  <chr>    <chr>    <chr>   <chr>    <chr>   
+## 1 Ducks  20 of 50 37 of 50 1 of 50 30 of 50 7 of 50 
+## 2 Eagles 9 of 50  34 of 50 3 of 50 12 of 50 16 of 50
+## 3 Hawks  13 of 50 12 of 50 5 of 50 12 of 50 19 of 50
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{losses\_data\_frame}\OtherTok{\textless{}{-}}\NormalTok{losses\_data\_frame }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols=}\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"19"}\NormalTok{)}\SpecialCharTok{|}\FunctionTok{starts\_with}\NormalTok{(}\StringTok{"20"}\NormalTok{),   }\CommentTok{\#指定需要转换的列（使用starts\_with函数选择列名以"Var"开头的列）}
+               \AttributeTok{names\_to =} \StringTok{"Year"}\NormalTok{,        }\CommentTok{\# 新列名，用于存储变量的名称}
+               \AttributeTok{values\_to =} \StringTok{"loss\_of\_games"}\NormalTok{)}
+\NormalTok{losses\_tidy }\OtherTok{\textless{}{-}}\NormalTok{ losses\_data\_frame }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(...}\DecValTok{1}\NormalTok{,Year,loss\_of\_games) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{separate}\NormalTok{(}\AttributeTok{col =}\NormalTok{ loss\_of\_games, }\AttributeTok{into =} \FunctionTok{c}\NormalTok{(}\StringTok{"Losses"}\NormalTok{, }\StringTok{"Total"}\NormalTok{), }\AttributeTok{sep =} \StringTok{"of"}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{Teams=}\NormalTok{...}\DecValTok{1}\NormalTok{)}
+\NormalTok{losses\_tidy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{dim}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 248   4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{losses\_tidy }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+##   Teams Year  Losses Total
+##   <chr> <chr> <chr>  <chr>
+## 1 Ducks 1990  "20 "  " 50"
+## 2 Ducks 1991  "37 "  " 50"
+## 3 Ducks 1992  "1 "   " 50"
+## 4 Ducks 1993  "30 "  " 50"
+## 5 Ducks 1994  "7 "   " 50"
+## 6 Ducks 1995  "2 "   " 50"
+\end{verbatim}
+
+\#2 \#\#2.2 \#\#\#q3
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hockey\_df}\OtherTok{\textless{}{-}}\FunctionTok{full\_join}\NormalTok{(wins\_tidy,losses\_tidy)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Joining with `by = join_by(Teams, Year, Total)`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(hockey\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 248 x 5
+##    Teams Year  Wins  Total Losses
+##    <chr> <chr> <chr> <chr> <chr> 
+##  1 Ducks 1990  "30 " " 50" "20 " 
+##  2 Ducks 1991  "11 " " 50" "37 " 
+##  3 Ducks 1992  "30 " " 50" "1 "  
+##  4 Ducks 1993  "12 " " 50" "30 " 
+##  5 Ducks 1994  "24 " " 50" "7 "  
+##  6 Ducks 1995  "13 " " 50" "2 "  
+##  7 Ducks 1996  "25 " " 50" "20 " 
+##  8 Ducks 1997  "24 " " 50" "9 "  
+##  9 Ducks 1998  "27 " " 50" "17 " 
+## 10 Ducks 1999  "23 " " 50" "23 " 
+## # i 238 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hockey\_df}\OtherTok{\textless{}{-}}\NormalTok{hockey\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Teams,Year,Wins,Total,Losses) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Draws =} \FunctionTok{as.integer}\NormalTok{(Total)}\SpecialCharTok{{-}}\FunctionTok{as.integer}\NormalTok{(Wins)}\SpecialCharTok{{-}}\FunctionTok{as.integer}\NormalTok{(Losses),}\AttributeTok{Wins\_rt =} \FunctionTok{as.double}\NormalTok{(Wins)}\SpecialCharTok{/}\FunctionTok{as.double}\NormalTok{(Total),}\AttributeTok{Losses\_rt =} \FunctionTok{as.double}\NormalTok{(Losses)}\SpecialCharTok{/}\FunctionTok{as.double}\NormalTok{(Total), }\AttributeTok{Draws\_rt =} \FunctionTok{as.double}\NormalTok{(Draws)}\SpecialCharTok{/}\FunctionTok{as.double}\NormalTok{(Total))}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(Year,Wins,Total,Losses),}\SpecialCharTok{\textasciitilde{}}\FunctionTok{as.integer}\NormalTok{(.)))}
+\NormalTok{hockey\_df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 9
+##   Teams  Year  Wins Total Losses Draws Wins_rt Losses_rt Draws_rt
+##   <chr> <int> <int> <int>  <int> <int>   <dbl>     <dbl>    <dbl>
+## 1 Ducks  1990    30    50     20     0    0.6       0.4      0   
+## 2 Ducks  1991    11    50     37     2    0.22      0.74     0.04
+## 3 Ducks  1992    30    50      1    19    0.6       0.02     0.38
+## 4 Ducks  1993    12    50     30     8    0.24      0.6      0.16
+## 5 Ducks  1994    24    50      7    19    0.48      0.14     0.38
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hockey\_df}\OtherTok{\textless{}{-}}\NormalTok{hockey\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Teams) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{W\_md =} \FunctionTok{median}\NormalTok{(Wins\_rt,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}\AttributeTok{W\_mn=}\FunctionTok{mean}\NormalTok{(Wins\_rt),}\AttributeTok{L\_md=}\FunctionTok{median}\NormalTok{(Losses\_rt,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}\AttributeTok{L\_mn=}\FunctionTok{mean}\NormalTok{(Losses\_rt),}\AttributeTok{D\_md=}\FunctionTok{median}\NormalTok{(Draws\_rt,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{),}\AttributeTok{D\_mn=}\FunctionTok{mean}\NormalTok{(Draws\_rt))}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Teams,W\_md,W\_mn,L\_md,L\_mn,D\_md,D\_mn)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{c}\NormalTok{(W\_md,W\_mn,L\_md,L\_mn,D\_md,D\_mn),}\SpecialCharTok{\textasciitilde{}}\FunctionTok{round}\NormalTok{(.,}\DecValTok{3}\NormalTok{)))}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(W\_md))}
+\FunctionTok{print}\NormalTok{(hockey\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 8 x 7
+##   Teams        W_md  W_mn  L_md  L_mn  D_md  D_mn
+##   <chr>       <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+## 1 Eagles      0.45  0.437 0.25  0.279 0.317 0.284
+## 2 Penguins    0.45  0.457 0.3   0.31  0.133 0.232
+## 3 Hawks       0.417 0.388 0.233 0.246 0.32  0.366
+## 4 Ducks       0.383 0.362 0.34  0.333 0.25  0.305
+## 5 Owls        0.32  0.333 0.3   0.33  0.383 0.337
+## 6 Ostriches   0.3   0.309 0.4   0.395 0.267 0.296
+## 7 Storks      0.3   0.284 0.22  0.283 0.48  0.433
+## 8 Kingfishers 0.233 0.245 0.34  0.36  0.4   0.395
+\end{verbatim}
+
+\#3 \#\#3.1 \#\#\#q1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{filtered\_data }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(wins\_tidy, Teams}\SpecialCharTok{==}\StringTok{\textquotesingle{}Ducks\textquotesingle{}}\NormalTok{)}
+\NormalTok{univar\_plot}\OtherTok{\textless{}{-}}\FunctionTok{ggplot}\NormalTok{(filtered\_data, }\FunctionTok{aes}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(Wins)))}
+\NormalTok{univar\_plot}\SpecialCharTok{+}\FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Histogram of Wins"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Wins"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Count"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment02_files/figure-latex/unnamed-chunk-21-1.pdf}
+\#3 \#\#3.1 \#\#\#q2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{univar\_plot}\SpecialCharTok{+}\FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{adjust=}\FloatTok{0.5}\NormalTok{)}\SpecialCharTok{+}\FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Density\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment02_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{univar\_plot}\SpecialCharTok{+}\FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{adjust=}\DecValTok{2}\NormalTok{)}\SpecialCharTok{+}\FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Density\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment02_files/figure-latex/unnamed-chunk-23-1.pdf}
+\#3 \#\#3.1 \#\#\#q3
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wins\_teams}\OtherTok{\textless{}{-}}\NormalTok{wins\_tidy }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_wider}\NormalTok{(}\AttributeTok{names\_from =}\NormalTok{ Teams,}\AttributeTok{values\_from =}\NormalTok{ Wins)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{Total)}
+\FunctionTok{print}\NormalTok{(wins\_teams)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 31 x 9
+##    Year  Ducks Eagles Hawks Kingfishers Ostriches Owls  Penguins Storks
+##    <chr> <chr> <chr>  <chr> <chr>       <chr>     <chr> <chr>    <chr> 
+##  1 1990  "30 " "24 "  "20 " "16 "       "13 "     "19 " "23 "    "20 " 
+##  2 1991  "11 " "12 "  "22 " "19 "       "13 "     "13 " "29 "    "13 " 
+##  3 1992  "30 " "37 "  "33 " "12 "       "10 "     "18 " "30 "    "18 " 
+##  4 1993  "12 " "14 "  "11 " "10 "       "25 "     "16 " "32 "    "22 " 
+##  5 1994  "24 " "32 "  "20 " "17 "       "10 "     "13 " "33 "    "19 " 
+##  6 1995  "13 " "34 "  "18 " "11 "       "21 "     "24 " "36 "    "11 " 
+##  7 1996  "25 " "17 "  "21 " "11 "       "13 "     "24 " "12 "    "15 " 
+##  8 1997  "24 " "25 "  "23 " "12 "       "18 "     "10 " "16 "    "15 " 
+##  9 1998  "27 " "33 "  "18 " "11 "       "24 "     "20 " "34 "    "14 " 
+## 10 1999  "23 " "28 "  "28 " "19 "       "18 "     "21 " "20 "    "13 " 
+## # i 21 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(wins\_teams, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Ducks, }\AttributeTok{y =}\NormalTok{ Eagles)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Wins of two teams"}\NormalTok{,}
+       \AttributeTok{x =} \StringTok{"Ducks"}\NormalTok{,}
+       \AttributeTok{y =} \StringTok{"Eagles"}\NormalTok{)}\SpecialCharTok{+}\FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment02_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\end{document}

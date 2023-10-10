@@ -1,0 +1,50 @@
+---
+title: "assignment01 lab04"
+author: "SHUO"
+date: "2023-09-27"
+output: html_document
+---
+
+```{r} 
+animals<-c("Snake","Ostrich","cat","Spider")
+num_legs<-c(0,2,4,8)
+animals_df<-data.frame(animals,num_legs)
+animals_df
+```
+
+```{r}
+#生成矩阵
+x_vect<-c(seq(12,2,-2))
+x_vect
+X<-matrix(x_vect,2,3)
+X
+y_vect<-c(seq(1,4,1))
+y_vect
+Y<-(matrix(y_vect,2,2))
+Y
+z_vect<-c(seq(4,10,2))
+z_vect
+Z<-matrix(z_vect,2,2)
+Z
+#相加
+Y+Z
+#转置之前相乘
+Y*Z
+Y%*%Z
+Z%*%Y
+#转置相加
+t(Y)
+t(Z)
+t(Y)+t(Z)
+#y，z矩阵相乘
+t(Y)*t(Z)
+t(Y)%*%t(Z)
+t(Z)%*%t(Y)
+#Y X相乘
+Y%*%X
+#矩阵倒数  
+solve(Y)
+solve(Y)%*%Y
+solve(Y)%*%X
+
+```

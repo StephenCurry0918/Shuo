@@ -1,0 +1,272 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+```{r}
+library(tidyverse)
+library(Stat2Data)
+data("Hawks")
+```
+#1
+##1.1
+###q1
+```{r}
+hSF<-Hawks %>%
+  filter(Species=='RT'&Weight>=1000)%>%
+  select(Wing,Weight,Tail)
+head(hSF)
+```
+#1
+##1.2
+###q1
+```{r}
+Arrange_Hawks=hSF %>%
+  arrange(Wing)
+head(Arrange_Hawks)
+```
+#1
+##1.3
+###q1
+```{r}
+species_code<-c('CH','RT','SS')
+species_name_full<-c("Cooper's",'Red-tailed','Sharp-shinned')
+hawkSpeciesNameCodes=data.frame(species_code,species_name_full)
+head(hawkSpeciesNameCodes)
+hawksFullName=Hawks %>%
+  select(Species,Wing,Weight,Tail) %>%
+  rename(species_code=Species)
+hawksFullName<-left_join(hawkSpeciesNameCodes,hawksFullName)
+hawksFullName<-select(hawksFullName,species_name_full,Wing,Weight,Tail)
+hawksFullName=hawksFullName %>% rename(Species=species_name_full)
+head(hawksFullName,1000)
+```
+#1
+##1.4
+###q1
+```{r}
+BMI=Hawks %>%
+  select(Species,Weight,Wing) %>%
+  mutate(BMI=1000*Weight/Wing/Wing) %>%
+  arrange(desc(BMI)) %>%
+  select(Species,BMI)
+head(BMI)
+```
+#1
+##1.5
+###q1
+```{r}
+sumHawks=hawksFullName %>%
+  group_by(Species) %>%
+  summarise(num_rows=n(),mn_wing=mean(Wing),md_wing=median(Wing,na.rm=TRUE),t_mn_wing=mean(Wing,trim = 0.1),b_wt_ratio=max(Wing/Tail,na.rm=TRUE))
+head(sumHawks)
+```
+###q2
+```{r}
+num_nas_hawks <- Hawks %>% 
+  select(Species,Wing,Weight,Culmen,Hallux,Tail,StandardTail,Tarsus,Crop) %>%
+  group_by(Species) %>%
+  summarize(Wing=sum(is.na(Wing)), Weight=sum(is.na(Weight)), Culmen=sum(is.na(Culmen)), Hallux=sum(is.na(Hallux)), Tail=sum(is.na(Tail)), StandardTail=sum(is.na(StandardTail)), Tarsus=sum(is.na(Tarsus)), Crop=sum(is.na(Crop)))
+print(num_nas_hawks)
+
+num_nas_hawks <- Hawks %>% 
+  select(Species,Wing,Weight,Culmen,Hallux,Tail,StandardTail,Tarsus,Crop) %>%
+  group_by(Species) %>%
+  summarize(across(everything(), ~sum(is.na(.x))))
+print(num_nas_hawks)
+```
+#2
+##2.1
+###q1
+```{r}
+impute_by_mean<-function(x){
+  mu<-mean(x,na.rm=1) # first compute the mean of x 
+  impute_f<-function(z){ # coordinate-wise imputation
+  if(is.na(z)){
+    return(mu) # if z is na replace with mean 
+    }else{
+      return(z) # otherwise leave in place 
+    }
+  }
+return(map_dbl(x,impute_f)) # apply the map function to impute across vector
+}
+v<-c(4,5,6,8,NA,6)
+impute_by_mean(v)
+```
+###q2
+```{r}
+impute_by_median<-function(x){
+  mu<-median(x,na.rm=1) # first compute the mean of x 
+  impute_f<-function(z){ # coordinate-wise imputation
+  if(is.na(z)){
+    return(mu) # if z is na replace with mean 
+    }else{
+      return(z) # otherwise leave in place 
+    }
+  }
+return(map_dbl(x,impute_f)) # apply the map function to impute across vector
+}
+v<-c(1,2,NA,4)
+impute_by_median(v)
+```
+###q3
+```{r}
+# 定义变量x的序列
+x <- seq(0, 10, by = 0.1)
+
+# 计算变量y的值
+y <- 5 * x + 1
+
+# 创建数据框
+df_xy <- data.frame(x = x, y = y)
+
+# 使用管道操作符显示前5行数据
+df_xy %>% head(5)
+```
+###q4
+```{r}
+sometimes_missing<-function(x,y){
+  if (x%%5==0){
+    return(NA)
+  }else{
+    return(y)
+  }
+}
+sometimes_missing(14,25)
+```
+```{r}
+library(dplyr)
+library(purrr)
+x<-seq(0,10,by=0.1)
+df_xy_missing<-data.frame(x=x)
+df_xy_missing<-df_xy_missing %>%
+  mutate(row_number=row_number())
+df_xy_missing <- df_xy_missing[, c("row_number", "x")]
+create_NA<-function(x,y){
+  if (x%%5==0){
+    z=NA
+  }else{
+    z=5*y+1
+  }
+}
+df_xy_missing<-df_xy_missing %>%
+  mutate(y=map2_dbl(row_number,x,~ create_NA(.x,.y)))
+df_xy_missing %>% head(10)
+```
+#2
+##2.2
+```{r}
+library(readxl) # load the readxl library
+folder_path <- "E:/"
+#folder_path<-"E:/" # set this to the name of the
+# directory containing "HockeyLeague.xlsx"
+file_name<-"HockeyLeague.xlsx" # set the file name
+file_path<-paste(folder_path,file_name,sep="") # create the file_path
+wins_data_frame<-read_excel(file_path,sheet="Wins") # read of a sheet from an xl file
+```
+```{r}
+wins_data_frame %>%
+  select(1:6) %>%
+  head(3)
+```
+#2
+##2.2
+###q1
+```{r}
+library(tidyr)
+wins_data_frame<-wins_data_frame %>%
+  pivot_longer(cols=starts_with("19")|starts_with("20"),   #指定需要转换的列（使用starts_with函数选择列名以"Var"开头的列）
+               names_to = "Year",        # 新列名，用于存储变量的名称
+               values_to = "Win_of_games")
+wins_tidy <- wins_data_frame %>%
+  select(...1,Year,Win_of_games) %>%
+  separate(col = Win_of_games, into = c("Wins", "Total"), sep = "of")%>%
+  rename(Teams=...1)
+wins_tidy %>% dim()
+wins_tidy %>% head()
+```
+#2
+##2.2
+###q2
+```{r}
+folder_path <- "E:/"
+#folder_path<-"E:/" # set this to the name of the
+# directory containing "HockeyLeague.xlsx"
+file_name<-"HockeyLeague.xlsx" # set the file name
+file_path<-paste(folder_path,file_name,sep="") # create the file_path
+losses_data_frame<-read_excel(file_path,sheet="Losses") # read of a sheet from an xl file
+```
+```{r}
+losses_data_frame %>%
+  select(1:6) %>%
+  head(3)
+```
+```{r}
+losses_data_frame<-losses_data_frame %>%
+  pivot_longer(cols=starts_with("19")|starts_with("20"),   #指定需要转换的列（使用starts_with函数选择列名以"Var"开头的列）
+               names_to = "Year",        # 新列名，用于存储变量的名称
+               values_to = "loss_of_games")
+losses_tidy <- losses_data_frame %>%
+  select(...1,Year,loss_of_games) %>%
+  separate(col = loss_of_games, into = c("Losses", "Total"), sep = "of")%>%
+  rename(Teams=...1)
+losses_tidy %>% dim()
+losses_tidy %>% head()
+```
+#2
+##2.2
+###q3
+```{r}
+hockey_df<-full_join(wins_tidy,losses_tidy)
+print(hockey_df)
+hockey_df<-hockey_df %>%
+  select(Teams,Year,Wins,Total,Losses) %>%
+  mutate(Draws = as.integer(Total)-as.integer(Wins)-as.integer(Losses),Wins_rt = as.double(Wins)/as.double(Total),Losses_rt = as.double(Losses)/as.double(Total), Draws_rt = as.double(Draws)/as.double(Total))%>%
+  mutate(across(c(Year,Wins,Total,Losses),~as.integer(.)))
+hockey_df %>% head(5)
+```
+```{r}
+hockey_df<-hockey_df %>%
+  group_by(Teams) %>%
+  summarise(W_md = median(Wins_rt,na.rm=TRUE),W_mn=mean(Wins_rt),L_md=median(Losses_rt,na.rm=TRUE),L_mn=mean(Losses_rt),D_md=median(Draws_rt,na.rm=TRUE),D_mn=mean(Draws_rt))%>%
+  select(Teams,W_md,W_mn,L_md,L_mn,D_md,D_mn)%>%
+  mutate(across(c(W_md,W_mn,L_md,L_mn,D_md,D_mn),~round(.,3)))%>%
+  arrange(desc(W_md))
+print(hockey_df)
+```
+#3
+##3.1
+###q1
+```{r}
+library(ggplot2)
+filtered_data <- filter(wins_tidy, Teams=='Ducks')
+univar_plot<-ggplot(filtered_data, aes(as.numeric(Wins)))
+univar_plot+geom_histogram(binwidth = 3) +
+  labs(title = "Histogram of Wins",
+       x = "Wins",
+       y = "Count") +
+  theme_minimal()
+```
+#3
+##3.1
+###q2
+```{r}
+univar_plot+geom_density(adjust=0.5)+ylab('Density')
+```
+```{r}
+univar_plot+geom_density(adjust=2)+ylab('Density')
+```
+#3
+##3.1
+###q3
+```{r}
+wins_teams<-wins_tidy %>%
+  pivot_wider(names_from = Teams,values_from = Wins)%>%
+  select(-Total)
+print(wins_teams)
+ggplot(wins_teams, aes(x = Ducks, y = Eagles)) +
+  geom_point() +
+  labs(title = "Wins of two teams",
+       x = "Ducks",
+       y = "Eagles")+theme_minimal()
+```
